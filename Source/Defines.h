@@ -13,8 +13,12 @@
 
 #pragma once
 
-#include <host_defines.h>
+//#include <host_defines.h>
 #include <float.h>
+#include <cstring>
+
+
+#include <cuda_runtime.h>
 
 #pragma warning(disable : 4244)
 #pragma warning(disable : 4251)
@@ -60,7 +64,8 @@
 #define	MAX_BOKEH_DATA										12
 #define MB													powf(1024.0f, 2.0f)
 
-#define PRINT_CUDA_ERROR(call) {                                    \
+#define PRINT_CUDA_ERROR(call) \
+    {\
 	cudaError err = call;                                                    \
 	if( cudaSuccess != err) {                                                \
 	Log("Cuda error in file '%s' in line %i : %s.\n",        \

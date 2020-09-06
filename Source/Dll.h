@@ -14,7 +14,7 @@
 #pragma once
 
 #ifdef _EXPORTING
-	#define EXPOSURE_RENDER_DLL    __declspec(dllexport)
+	#define EXPOSURE_RENDER_DLL    
 #else
-	#define EXPOSURE_RENDER_DLL    __declspec(dllimport)
+	#define EXPOSURE_RENDER_DLL    
 #endif

@@ -13,6 +13,8 @@
 
 #pragma once
 
+#include <string.h>
+
 #define MAX_NO_DURATIONS 30
 
 class CTiming
@@ -33,9 +35,9 @@ public:
 
 		virtual ~CTiming(void) {};
 
-		HO CTiming& CTiming::operator=(const CTiming& Other)
+		HO CTiming& operator=(const CTiming& Other)
 		{
-				strcpy_s(m_Name, Other.m_Name);
+				strcpy(m_Name, Other.m_Name);
 		
 					for (int i = 0; i < MAX_NO_DURATIONS; i++)
 					{
