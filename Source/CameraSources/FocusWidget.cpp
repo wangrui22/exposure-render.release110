@@ -14,8 +14,9 @@
 #include "Stable.h"
 
 #include "FocusWidget.h"
-#include "RenderThread.h"
+//#include "RenderThread.h"
 #include "Camera.h"
+#include "Status.h"
 
 QFocusWidget::QFocusWidget(QWidget* pParent) :
 	QGroupBox(pParent),

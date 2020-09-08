@@ -14,12 +14,12 @@
 #include "Stable.h"
 
 #include "StatisticsDockWidget.h"
-#include "MainWindow.h"
+//#include "MainWindow.h"
 
-class QGraphicsWidget2 : public QGraphicsWidget
-{
+// class QGraphicsWidget2 : public QGraphicsWidget
+// {
 
-};
+// };
 
 class QTfCanvas : public QWidget
 {

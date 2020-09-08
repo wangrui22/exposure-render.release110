@@ -14,8 +14,11 @@
 #include "Stable.h"
 
 #include "StatisticsWidget.h"
-#include "MainWindow.h"
-#include "RenderThread.h"
+#include <QHeaderView>
+#include "Status.h"
+
+//#include "MainWindow.h"
+//#include "RenderThread.h"
 
 QStatisticsWidget::QStatisticsWidget(QWidget* pParent) :
 	QTreeWidget(pParent),

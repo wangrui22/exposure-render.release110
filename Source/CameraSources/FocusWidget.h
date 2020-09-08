@@ -13,6 +13,10 @@
 
 #pragma once
 
+#include <QGroupBox>
+#include <QGridLayout>
+#include <QComboBox>
+#include "Controls.h"
 #include "Focus.h"
 
 class QFocusWidget : public QGroupBox

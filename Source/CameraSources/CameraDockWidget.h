@@ -13,6 +13,7 @@
 
 #pragma once
 
+#include <QDockWidget>
 #include "CameraWidget.h"
 
 class QCameraDockWidget : public QDockWidget

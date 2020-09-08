@@ -22,9 +22,10 @@
 #include <QIcon>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QLabel>
 
 
-inline void ReadVectorElement(QDomElement& Parent, const QString& Name, float& X, float& Y, float& Z)
+inline void ReadVectorElement(const QDomElement& Parent, const QString& Name, float& X, float& Y, float& Z)
 {
 	X = Parent.firstChildElement(Name).attribute("X").toFloat();
 	Y = Parent.firstChildElement(Name).attribute("Y").toFloat();

@@ -13,6 +13,8 @@
 
 #pragma once
 
+#include <QGroupBox>
+#include "Controls.h"
 #include "Aperture.h"
 
 class QApertureWidget : public QGroupBox

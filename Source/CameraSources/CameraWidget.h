@@ -13,6 +13,9 @@
 
 #pragma once
 
+#include <QWidget>
+#include <QGridLayout>
+
 #include "Camera.h"
 #include "FilmWidget.h"
 #include "ApertureWidget.h"

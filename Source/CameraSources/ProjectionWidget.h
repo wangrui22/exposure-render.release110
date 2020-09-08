@@ -13,6 +13,9 @@
 
 #pragma once
 
+#include <QGroupBox>
+#include <QGridLayout>
+#include "Controls.h"
 #include "Projection.h"
 
 class QProjectionWidget : public QGroupBox

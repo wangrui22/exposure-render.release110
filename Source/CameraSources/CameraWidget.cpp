@@ -14,9 +14,10 @@
 #include "Stable.h"
 
 #include "CameraWidget.h"
-#include "MainWindow.h"
-#include "RenderThread.h"
+//#include "MainWindow.h"
+//#include "RenderThread.h"
 #include "Scene.h"
+#include "Status.h"
 
 QCameraWidget::QCameraWidget(QWidget* pParent) :
 	QWidget(pParent),

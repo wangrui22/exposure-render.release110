@@ -21,13 +21,13 @@ class QAperture : public QPresetXML
 
 public:
 	QAperture(QObject* pParent = NULL);
-	QAperture::QAperture(const QAperture& Other);
-	QAperture& QAperture::operator=(const QAperture& Other);
+	QAperture(const QAperture& Other);
+	QAperture& operator=(const QAperture& Other);
 
 	float			GetSize(void) const;
 	void			SetSize(const float& Size);
 	void			Reset(void);
-	void			ReadXML(QDomElement& Parent);
+	void			ReadXML(const QDomElement& Parent);
 	QDomElement		WriteXML(QDomDocument& DOM, QDomElement& Parent);
 
 signals:

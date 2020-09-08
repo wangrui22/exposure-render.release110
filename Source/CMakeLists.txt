@@ -7,6 +7,10 @@ add_subdirectory(./UtilSources)
 
 add_subdirectory(./CudaSources)
 
+add_subdirectory(./StatisticsSources)
+
 add_subdirectory(./PresetsSources)
 
 add_subdirectory(./LightingSources)
+
+add_subdirectory(./CameraSources)

@@ -1,6 +1,8 @@
 #pragma once
 
 #include <QtGui>
+#include <QTreeWidget>
+#include <QGridLayout>
 
 class QStatisticsWidget : public QTreeWidget
 {

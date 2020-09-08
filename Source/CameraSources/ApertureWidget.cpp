@@ -12,10 +12,13 @@
 */
 
 #include "Stable.h"
+#include <QLabel>
 
 #include "ApertureWidget.h"
-#include "RenderThread.h"
+//#include "RenderThread.h"
 #include "Camera.h"
+#include "Status.h"
+#include "Preset.h"
 
 QApertureWidget::QApertureWidget(QWidget* pParent) :
 	QGroupBox(pParent),

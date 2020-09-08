@@ -13,6 +13,10 @@
 
 #pragma once
 
+#include <QPushButton>
+#include <QGroupBox>
+#include <QCheckBox>
+#include "Controls.h"
 #include "Film.h"
 
 class QFilmResolutionPreset

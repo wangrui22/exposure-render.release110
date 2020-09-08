@@ -1,7 +1,9 @@
 #pragma once
 
 #include <QtGui>
-
+#include <QGridLayout>
+#include <QDockWidget>
+#include <QGraphicsScene>
 #include "StatisticsWidget.h"
 
 class QStatisticsDockWidget : public QDockWidget

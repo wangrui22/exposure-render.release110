@@ -14,9 +14,10 @@
 #include "Stable.h"
 
 #include "FilmWidget.h"
-#include "RenderThread.h"
+//#include "RenderThread.h"
 #include "Camera.h"
 #include "Scene.h"
+#include "Status.h"
 
 QFilmWidget::QFilmWidget(QWidget* pParent) :
 	QGroupBox(pParent),

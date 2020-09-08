@@ -14,7 +14,7 @@
 #include "Stable.h"
 
 #include "CameraDockWidget.h"
-#include "MainWindow.h"
+//#include "MainWindow.h"
 
 QCameraDockWidget::QCameraDockWidget(QWidget* pParent) :
 	QDockWidget(pParent),
