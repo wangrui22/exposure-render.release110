@@ -13,6 +13,12 @@
 
 #pragma once
 
+#include "Controls.h"
+#include <QGroupBox>
+#include <QGridLayout>
+#include <QComboBox>
+
+
 class QAppearanceSettingsWidget : public QGroupBox
 {
 	Q_OBJECT

@@ -13,6 +13,13 @@
 
 #pragma once
 
+#include "Controls.h"
+#include <QGroupBox>
+#include <QGridLayout>
+#include <QComboBox>
+#include <QPushButton>
+
+
 class QNode;
 
 class QNodeSelectionWidget : public QGroupBox
@@ -24,7 +31,7 @@ public:
 
 private slots:
 	void OnNodeSelectionChanged(QNode* pNode);
-	void OnNodeSelectionChanged(const int& Index);
+	//void OnNodeSelectionChanged(const int& Index);
 	void OnFirstNode(void);
 	void OnPreviousNode(void);
 	void OnNextNode(void);

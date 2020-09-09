@@ -14,3 +14,5 @@ add_subdirectory(./PresetsSources)
 add_subdirectory(./LightingSources)
 
 add_subdirectory(./CameraSources)
+
+add_subdirectory(./AppearanceSources)

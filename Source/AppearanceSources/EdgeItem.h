@@ -13,6 +13,9 @@
 
 #pragma once
 
+#include <QGraphicsLineItem>
+#include <QPen>
+
 class QTransferFunctionItem;
 
 class QEdgeItem : public QGraphicsLineItem
@@ -20,7 +23,7 @@ class QEdgeItem : public QGraphicsLineItem
 public:
 	QEdgeItem(QTransferFunctionItem* pTransferFunctionItem);
 
-	QEdgeItem::QEdgeItem(const QEdgeItem& Other)
+	QEdgeItem(const QEdgeItem& Other)
 	{
 		*this = Other;
 	};

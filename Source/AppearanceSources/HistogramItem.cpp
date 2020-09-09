@@ -14,6 +14,8 @@
 #include "Stable.h"
 
 #include "HistogramItem.h"
+#include "Scene.h"
+
 
 QHistogramItem::QHistogramItem(QGraphicsItem* pParent) :
 	QGraphicsRectItem(pParent),

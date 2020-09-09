@@ -17,6 +17,8 @@
 #include "TransferFunction.h"
 #include "TransferFunctionItem.h"
 
+#include <QGraphicsSceneMouseEvent>
+
 #define NODE_POSITION_EPSILON 0.01f
 
 float	QNodeItem::m_Radius			= 4.0f;

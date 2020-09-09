@@ -15,10 +15,11 @@
 
 #include "RenderThread.h"
 #include "CudaUtilities.h"
-#include "MainWindow.h"
-#include "LoadSettingsDialog.h"
+//#include "MainWindow.h"
+//#include "LoadSettingsDialog.h"
 #include "Lighting.h"
 #include "Timing.h"
+#include "Status.h"
 
 // CUDA kernels
 #include "Core.cuh"
@@ -37,6 +38,11 @@
 #include <vtkErrorCode.h>
 #include <vtkImageGradient.h>
 #include <vtkExtractVectorComponents.h>
+
+#include "TransferFunction.h"
+#include "Camera.h"
+#include "Histogram.h"
+
 
 // Render thread
 QRenderThread* gpRenderThread = NULL;
@@ -352,20 +358,20 @@ bool QRenderThread::Load(QString& FileName)
 
 	if (!FileInfo.exists())
 	{
-		Log(QString(QFileInfo(FileName).filePath().replace("//", "/")).toAscii() + "  does not exist!", QLogger::Critical);
+		Log(QString(QFileInfo(FileName).filePath().replace("//", "/")).toLatin1() + "  does not exist!", QLogger::Critical);
 		return false;
 	}
 
-	Log(QString("Loading " + QFileInfo(FileName).fileName()).toAscii());
+	Log(QString("Loading " + QFileInfo(FileName).fileName()).toLatin1());
 
 	// Exit if the reader can't read the file
-	if (!MetaImageReader->CanReadFile(m_FileName.toAscii()))
+	if (!MetaImageReader->CanReadFile(m_FileName.toLatin1()))
 	{
-		Log(QString("Meta image reader can't read file " + QFileInfo(FileName).fileName()).toAscii(), QLogger::Critical);
+		Log(QString("Meta image reader can't read file " + QFileInfo(FileName).fileName()).toLatin1(), QLogger::Critical);
 		return false;
 	}
 
-	MetaImageReader->SetFileName(m_FileName.toAscii());
+	MetaImageReader->SetFileName(m_FileName.toLatin1());
 
 	MetaImageReader->Update();
 
@@ -379,7 +385,9 @@ bool QRenderThread::Load(QString& FileName)
 	
 	Log("Casting volume data type to short", "grid");
 
-	ImageCast->SetInput(MetaImageReader->GetOutput());
+	//WR
+	ImageCast->SetOutput(MetaImageReader->GetOutput());
+	//ImageCast->SetInput(MetaImageReader->GetOutput());
 	ImageCast->SetOutputScalarTypeToShort();
 	ImageCast->Update();
 

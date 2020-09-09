@@ -14,6 +14,8 @@
 #include "Stable.h"
 
 #include "AppearanceDockWidget.h"
+#include "Status.h"
+
 
 QAppearanceWidget::QAppearanceWidget(QWidget* pParent) :
 	QWidget(pParent),

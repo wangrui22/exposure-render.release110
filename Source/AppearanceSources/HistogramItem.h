@@ -13,6 +13,14 @@
 
 #pragma once
 
+#include <QGraphicsRectItem>
+#include <QGraphicsItem>
+#include <QBrush>
+#include <QPen>
+#include <QGraphicsPolygonItem>
+#include <QList>
+#include <QGraphicsScene>
+
 #include "Histogram.h"
 
 class QHistogramItem : public QGraphicsRectItem
@@ -20,7 +28,7 @@ class QHistogramItem : public QGraphicsRectItem
 public:
 	QHistogramItem(QGraphicsItem* pParent);
 	virtual ~QHistogramItem(void);
-	QHistogramItem::QHistogramItem(const QHistogramItem& Other);
+	QHistogramItem(const QHistogramItem& Other);
 	QHistogramItem& operator = (const QHistogramItem& Other);
 
 	void	SetHistogram(QHistogram& Histogram);

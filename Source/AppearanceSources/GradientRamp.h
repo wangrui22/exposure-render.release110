@@ -13,6 +13,13 @@
 
 #pragma once
 
+#include <QWidget>
+#include <QString>
+#include <QGradientStops>
+#include <QColor>
+#include <QPen>
+#include <QResizeEvent>
+
 class QGradientRamp : public QWidget
 {
 public:

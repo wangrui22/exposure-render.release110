@@ -13,6 +13,11 @@
 
 #pragma once
 
+#include "Controls.h"
+#include <QGroupBox>
+#include <QGridLayout>
+#include <QLabel>
+
 class QNode;
 
 class QNodePropertiesWidget : public QGroupBox

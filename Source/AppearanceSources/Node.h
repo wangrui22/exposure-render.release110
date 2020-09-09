@@ -14,6 +14,7 @@
 #pragma once
 
 #include "Preset.h"
+#include <QColor>
 
 class QTransferFunction;
 

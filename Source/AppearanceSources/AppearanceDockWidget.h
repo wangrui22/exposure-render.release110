@@ -13,6 +13,9 @@
 
 #pragma once
 
+#include <QWidget>
+#include <QDockWidget>
+
 #include "PresetsWidget.h"
 #include "AppearanceSettingsWidget.h"
 #include "TransferFunctionWidget.h"

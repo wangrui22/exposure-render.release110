@@ -107,11 +107,11 @@ void QNodeSelectionWidget::OnNodeSelectionChanged(QNode* pNode)
 	SetupSelectionUI();
 }
 
-void QNodeSelectionWidget::OnNodeSelectionChanged(const int& Index)
-{
-	gTransferFunction.SetSelectedNode(Index);
-	SetupSelectionUI();
-}
+// void QNodeSelectionWidget::OnNodeSelectionChanged(const int& Index)
+// {
+// 	gTransferFunction.SetSelectedNode(Index);
+// 	SetupSelectionUI();
+// }
 
 void QNodeSelectionWidget::OnFirstNode(void)
 {

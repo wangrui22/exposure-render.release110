@@ -13,6 +13,11 @@
 
 #pragma once
 
+#include <QMutex>
+#include <QString>
+#include <QList>
+
+#include "Controls.h"
 #include "Variance.h"
 
 class QFrameBuffer
@@ -20,7 +25,7 @@ class QFrameBuffer
 public:
 	QFrameBuffer(void);
 	QFrameBuffer(const QFrameBuffer& Other);
-	QFrameBuffer& QFrameBuffer::operator=(const QFrameBuffer& Other);
+	QFrameBuffer& operator=(const QFrameBuffer& Other);
 	virtual ~QFrameBuffer(void);
 	void Set(unsigned char* pPixels, const int& Width, const int& Height);
 	unsigned char* GetPixels(void) { return m_pPixels; }
@@ -47,7 +52,7 @@ public:
 	QRenderThread(const QString& FileName = "", QObject* pParent = NULL);
 	QRenderThread(const QRenderThread& Other);
 	virtual ~QRenderThread(void);
-	QRenderThread& QRenderThread::operator=(const QRenderThread& Other);
+	QRenderThread& operator=(const QRenderThread& Other);
 
 	void run();
 

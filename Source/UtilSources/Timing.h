@@ -25,7 +25,7 @@ public:
 	HO CTiming(const char* pName)
 	{
 #ifndef __CUDACC__
-		sprintf_s(m_Name, "%s", pName);
+		printf(m_Name, "%s", pName);
 #endif
 		memset(m_Durations, 0, MAX_NO_DURATIONS * sizeof(float));
 

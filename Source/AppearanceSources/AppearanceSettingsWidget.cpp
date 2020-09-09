@@ -17,6 +17,7 @@
 #include "TransferFunction.h"
 #include "RenderThread.h"
 #include "Scene.h"
+#include "Status.h"
 
 QAppearanceSettingsWidget::QAppearanceSettingsWidget(QWidget* pParent) :
 	QGroupBox(pParent),

@@ -13,6 +13,13 @@
 
 #pragma once
 
+#include <QGraphicsEllipseItem>
+#include <QCursor>
+#include <QPen>
+#include <QBrush>
+#include <QGraphicsTextItem>
+
+
 class QNode;
 class QTransferFunctionItem;
 
@@ -20,7 +27,7 @@ class QNodeItem : public QGraphicsEllipseItem
 {
 public:
 	QNodeItem(QTransferFunctionItem* pTransferFunctionItem, QNode* pNode);
-	QNodeItem::QNodeItem(const QNodeItem& Other);
+	QNodeItem(const QNodeItem& Other);
 	QNodeItem& operator = (const QNodeItem& Other);
 
 	void UpdateTooltip(void);

@@ -40,7 +40,7 @@
 
 #include "RenderThread.h"
 
-#include "VolumeMapper.h"
+//#include "VolumeMapper.h"
 
 // http://www.na-mic.org/svn/Slicer3/branches/cuda/Modules/VolumeRenderingCuda/
 
