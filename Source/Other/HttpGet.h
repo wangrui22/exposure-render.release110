@@ -13,54 +13,27 @@
 
 #pragma once
 
-class QLoadSettingsDialog : public QDialog
+#include <QHttp>
+#include <QObject>
+#include <QFile>
+
+
+class QHttpGet : public QObject
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-    QLoadSettingsDialog(QWidget* pParent = NULL);
+    QHttpGet(QObject* pParent = NULL);
 
-	virtual void accept();
+    bool GetFile(const QUrl& Url, const QString& FilePath);
 
-public:
-	bool GetResample(void);
-	float GetResampleX(void);
-	float GetResampleY(void);
-	float GetResampleZ(void);
-
-	void Reset(void);
-	void SetToolTips(void);
+signals:
+    void done();
 
 private slots:
-	void LockY(const int& State);
-	void LockZ(const int& State);
-	void SetResample(const int& Resample);
-	void SetResampleX(const double& ResampleX);
-	void SetResampleY(const double& ResampleY);
-	void SetResampleZ(const double& ResampleZ);
-	void Accept(void);
-	void Reject(void);
-	void Clicked(QAbstractButton* pButton);
+    void HttpDone(bool Error);
 
 private:
-	QGridLayout			m_MainLayout;
-	QGroupBox			m_ResampleGroupBox;
-	QGridLayout			m_ResampleLayout;
-	QLabel				m_ResampleXLabel;
-	QDoubleSlider		m_ResampleXSlider;
-	QDoubleSpinner		m_ResampleXSpinBox;
-	QLabel				m_ResampleYLabel;
-	QDoubleSlider		m_ResampleYSlider;
-	QDoubleSpinner		m_ResampleYSpinBox;
-	QCheckBox			m_LockYCheckBox;
-	QLabel				m_ResampleZLabel;
-	QDoubleSlider		m_ResampleZSlider;
-	QDoubleSpinner		m_ResampleZSpinBox;
-	QCheckBox			m_LockZCheckBox;
-	QDialogButtonBox	m_DialogButtons;
-
-	bool				m_Resample;
-	float				m_ResampleX;
-	float				m_ResampleY;
-	float				m_ResampleZ;
+    QHttp	m_Http;
+    QFile	m_File;
 };

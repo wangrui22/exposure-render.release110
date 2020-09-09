@@ -10,13 +10,14 @@ include_directories(/usr/local/cuda/include)
 find_package(Qt4 REQUIRED)
 include(${QT_USE_FILE})
 set(CMAKE_AUTOMOC ON)
+SET(QT_USE_QTXML TRUE)
 
 aux_source_directory(./ StatisticSrc)
 
 add_library(StatisticLib ${StatisticSrc})
 
 
-target_link_libraries(StatisticLib UtilLib ${QT_LIBRARIES})
+target_link_libraries(StatisticLib UtilLib ${QT_LIBRARIES} Qt4::QtXml)
 
 #target_link_libraries(StatisticLib UtilLib Qt5::Widgets Qt5::Core Qt5::Gui Qt5::Xml)
 #set_target_properties(StatisticLib PROPERTIES AUTOMOC ON)

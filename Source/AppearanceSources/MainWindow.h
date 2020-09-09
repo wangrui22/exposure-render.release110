@@ -13,6 +13,10 @@
 
 #pragma once
 
+#include <QMainWindow>
+#include <QMenu>
+
+
 #include "RenderThread.h"
 #include "LightingDockWidget.h"
 #include "AppearanceDockWidget.h"
@@ -21,7 +25,6 @@
 #include "SettingsDockWidget.h"
 #include "LogDockWidget.h"
 #include "VtkWidget.h"
-#include "HttpGet.h"
 
 class CMainWindow : public QMainWindow
 {
@@ -86,7 +89,7 @@ private:
 
     QAction*							m_pRecentFileActions[MaxRecentFiles];
 
-	QHttpGet m_HttpGet;
+	//QHttpGet m_HttpGet;
 
 	QLabel m_Update;
 };

@@ -15,6 +15,8 @@
 
 #include "HardwareWidget.h"
 #include "RenderThread.h"
+#include "CudaUtilities.h"
+#include "Status.h"
 
 QCudaDevicesModel::QCudaDevicesModel(QObject *parent) :
 	QAbstractTableModel(parent)

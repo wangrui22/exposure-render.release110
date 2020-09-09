@@ -19,6 +19,8 @@
 #include "StartupDialog.h"
 #include "AboutDialog.h"
 #include "Scene.h"
+#include "Status.h"
+#include "CudaUtilities.h"
 
 QUrl	gVersionInfoUrl("http://exposure-render.googlecode.com/hg/VersionInfo.xml");
 int		gVersionID = 303;
@@ -59,7 +61,7 @@ CMainWindow::CMainWindow() :
 
 	QObject::connect(&gStatus, SIGNAL(RenderBegin()), this, SLOT(OnRenderBegin()));
 	QObject::connect(&gStatus, SIGNAL(RenderEnd()), this, SLOT(OnRenderEnd()));
-	QObject::connect(&m_HttpGet, SIGNAL(done()), this, SLOT(VersionInfoDownloaded()));
+	//QObject::connect(&m_HttpGet, SIGNAL(done()), this, SLOT(VersionInfoDownloaded()));
 
 	OnCheckForUpdates();
 }
@@ -341,9 +343,9 @@ void CMainWindow::OnSaveImage(void)
 
 void CMainWindow::OnCheckForUpdates(void)
 {
-	const QString FilePath = QApplication::applicationDirPath() + "/" + QFileInfo(gVersionInfoUrl.path()).fileName();
+	// const QString FilePath = QApplication::applicationDirPath() + "/" + QFileInfo(gVersionInfoUrl.path()).fileName();
 
-	m_HttpGet.GetFile(gVersionInfoUrl, FilePath);
+	// m_HttpGet.GetFile(gVersionInfoUrl, FilePath);
 }
 
 void CMainWindow::VersionInfoDownloaded(void)

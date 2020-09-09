@@ -14,8 +14,9 @@
 #include "Stable.h"
 
 #include "VtkWidget.h"
-//#include "MainWindow.h"
+#include "MainWindow.h"
 #include "Scene.h"
+#include "Status.h"
 
 #include <vtkMetaImageReader.h>
 #include <vtkVolumeProperty.h>

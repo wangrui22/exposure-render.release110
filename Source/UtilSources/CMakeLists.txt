@@ -6,6 +6,7 @@ SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
 find_package(Qt4 REQUIRED)
 include(${QT_USE_FILE})
 set(CMAKE_AUTOMOC ON)
+SET(QT_USE_QTXML TRUE)
 
 aux_source_directory(./ UtilSrc)
 
@@ -16,7 +17,7 @@ include_directories(/usr/local/cuda/include)
 add_library(UtilLib ${UtilSrc})
 
 
-target_link_libraries(UtilLib ${QT_LIBRARIES})
+target_link_libraries(UtilLib ${QT_LIBRARIES} Qt4::QtXml)
 
 #target_link_libraries(UtilLib Qt5::Widgets Qt5::Core Qt5::Gui Qt5::Xml)
 #set_target_properties(UtilLib PROPERTIES AUTOMOC ON)
