@@ -5,19 +5,23 @@ SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
 include_directories(${PROJECT_SOURCE_DIR}/UtilSources)
 include_directories(/usr/local/cuda/include)
 
-#find_package(Qt5 COMPONENTS Core Widgets Gui Xml REQUIRED)
+#QT5
+find_package(Qt5 COMPONENTS Core Widgets Gui Xml REQUIRED)
 
-find_package(Qt4 REQUIRED)
-include(${QT_USE_FILE})
-set(CMAKE_AUTOMOC ON)
-SET(QT_USE_QTXML TRUE)
+#QT4
+# find_package(Qt4 REQUIRED)
+# include(${QT_USE_FILE})
+# set(CMAKE_AUTOMOC ON)
+# SET(QT_USE_QTXML TRUE)
 
 aux_source_directory(./ PresetsSrc)
 
 add_library(PresetsLib ${PresetsSrc})
 
-target_link_libraries(PresetsLib UtilLib ${QT_LIBRARIES} Qt4::QtXml)
+#QT5
+target_link_libraries(PresetsLib UtilLib Qt5::Widgets Qt5::Core Qt5::Gui Qt5::Xml)
+set_target_properties(PresetsLib PROPERTIES AUTOMOC ON)
+set_target_properties(PresetsLib PROPERTIES AUTOUIC ON)
 
-#target_link_libraries(PresetsLib UtilLib Qt5::Widgets Qt5::Core Qt5::Gui Qt5::Xml)
-#set_target_properties(PresetsLib PROPERTIES AUTOMOC ON)
-#set_target_properties(PresetsLib PROPERTIES AUTOUIC ON)
+#QT4
+#target_link_libraries(PresetsLib UtilLib ${QT_LIBRARIES} Qt4::QtXml)

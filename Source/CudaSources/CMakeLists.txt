@@ -5,12 +5,14 @@ SET(CMAKE_BUILD_TYPE "Debug")
 SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g2 -ggdb")
 SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
 
-#find_package(Qt5 COMPONENTS Core REQUIRED)
+#QT5
+find_package(Qt5 COMPONENTS Core REQUIRED)
 
-find_package(Qt4 REQUIRED)
-include(${QT_USE_FILE})
-set(CMAKE_AUTOMOC ON)
-SET(QT_USE_QTXML TRUE)
+#QT4
+# find_package(Qt4 REQUIRED)
+# include(${QT_USE_FILE})
+# set(CMAKE_AUTOMOC ON)
+# SET(QT_USE_QTXML TRUE)
 
 set(CUDA_NVCC_FLAGS "-gencode=arch=compute_50,code=sm_50;${CUDA_NVCC_FLAGS}")
 set(CUDA_NVCC_FLAGS "-gencode=arch=compute_52,code=sm_52;${CUDA_NVCC_FLAGS}")
@@ -26,9 +28,11 @@ add_library(CudaLib ${CUDA_SRC})
 
 target_link_libraries(CudaLib UtilLib)
 
-target_link_libraries(CudaLib ${QT_LIBRARIES} Qt4::QtXml)
+#QT5
+target_link_libraries(CudaLib Qt5::Core)
+set_target_properties(UtilLib PROPERTIES AUTOMOC ON)
+set_target_properties(UtilLib PROPERTIES AUTOUIC ON)
 
-#target_link_libraries(CudaLib Qt5::Core)
-# set_target_properties(UtilLib PROPERTIES AUTOMOC ON)
-# set_target_properties(UtilLib PROPERTIES AUTOUIC ON)
+#QT4
+#target_link_libraries(CudaLib ${QT_LIBRARIES} Qt4::QtXml)
 
