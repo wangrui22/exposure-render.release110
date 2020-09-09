@@ -63,7 +63,7 @@ CMainWindow::CMainWindow() :
 	QObject::connect(&gStatus, SIGNAL(RenderEnd()), this, SLOT(OnRenderEnd()));
 	//QObject::connect(&m_HttpGet, SIGNAL(done()), this, SLOT(VersionInfoDownloaded()));
 
-	OnCheckForUpdates();
+	//OnCheckForUpdates();
 }
 
 CMainWindow::~CMainWindow(void)
@@ -254,7 +254,8 @@ void CMainWindow::Open(QString FilePath)
 	SetCurrentFile(FilePath);
 
 	// Make string suitable for VTK
-	FilePath.replace("/", "\\\\");
+	//WR
+	//FilePath.replace("/", "\\\\");
 
  	if (!FilePath.isEmpty())
  		StartRenderThread(FilePath);

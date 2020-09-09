@@ -19,8 +19,8 @@ QString GetOpenFileName(const QString& Caption, const QString& Filter, const QSt
 
 	FileDialog.setWindowTitle(Caption);
     //WR Qt4->Qt5
-    //FileDialog.setFilter(Filter);
-	FileDialog.setNameFilters(QStringList(Filter));
+    FileDialog.setFilter(Filter);
+	//FileDialog.setNameFilters(QStringList(Filter));
 	FileDialog.setOption(QFileDialog::DontUseNativeDialog, true);
 	FileDialog.setWindowIcon(Icon.isEmpty() ? GetIcon("disk") : GetIcon(Icon));
 
@@ -36,8 +36,8 @@ QString GetSaveFileName(const QString& Caption, const QString& Filter, const QSt
 
 	FileDialog.setWindowTitle(Caption);
     //WR Qt4->Qt5
-	//FileDialog.setFilter(Filter);
-    FileDialog.setNameFilters(QStringList(Filter));
+	FileDialog.setFilter(Filter);
+    //FileDialog.setNameFilters(QStringList(Filter));
 	FileDialog.setOption(QFileDialog::DontUseNativeDialog, true);
 	FileDialog.setWindowIcon(Icon.isEmpty() ? GetIcon("disk") : GetIcon(Icon));
 	FileDialog.setAcceptMode(QFileDialog::AcceptSave);

@@ -161,8 +161,8 @@ void QCudaDevicesModel::EnumerateDevices(void)
 
 		CudaDevice.m_ID					= DeviceID;
 		//WR Qt4->Qt5
-		//CudaDevice.m_Name				= QString::fromAscii(DeviceProperties.name);
-		CudaDevice.m_Name				= QString::fromLatin1(DeviceProperties.name);
+		CudaDevice.m_Name				= QString::fromAscii(DeviceProperties.name);
+		//CudaDevice.m_Name				= QString::fromLatin1(DeviceProperties.name);
 		
 		CudaDevice.m_Capability			= QString::number(DeviceProperties.major) + "." + QString::number(DeviceProperties.minor);
 		CudaDevice.m_GlobalMemory		= QString::number((float)DeviceProperties.totalGlobalMem / powf(1024.0f, 2.0f)) + "MB";

@@ -14,6 +14,7 @@
 //#include "Stable.h"
 
 #include "Logger.h"
+#include <iostream>
 
 QLogger gLogger;
 
@@ -35,11 +36,13 @@ void QLogger::SetProgress(const QString& Event, const float& Progress)
 void Log(const QString& Message, const QLogger::MessageType& Type /*= QLogger::Normal*/)
 {
 	gLogger.SetLog(Message, Type);
+	std::cout << Message.toStdString() << std::endl;
 }
 
 void Log(const QString& Message, const QString& Icon /*= ""*/)
 {
 	gLogger.SetLog(Message, Icon);
+	std::cout << Message.toStdString() << std::endl;
 }
 
 void LogProgress(const QString& Event, const float& Progress)
