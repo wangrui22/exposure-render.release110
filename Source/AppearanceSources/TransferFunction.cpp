@@ -63,7 +63,7 @@ QTransferFunction& QTransferFunction::operator = (const QTransferFunction& Other
 	// Notify others that the function has changed selection has changed
 	emit Changed();
 
-	SetSelectedNode(NULL);
+	SetSelectedNode((QNode*)NULL);
 
 	return *this;
 }
@@ -217,7 +217,9 @@ void QTransferFunction::RemoveNode(QNode* pNode)
 	int NodeIndex = m_Nodes.indexOf(*pNode);
 
 	// Remove from list and memory
-	m_Nodes.remove(*pNode);
+	// m_Nodes.remove(*pNode);
+	//WR
+	m_Nodes.removeOne(*pNode);
 
 	// Update ID's
 	for (int i = 0; i < m_Nodes.size(); i++)
@@ -320,7 +322,7 @@ void QTransferFunction::SetGradientFactor(const float& GradientFactor)
 	emit Changed();
 }
 
-void QTransferFunction::ReadXML(QDomElement& Parent)
+void QTransferFunction::ReadXML(const QDomElement& Parent)
 {
 	QPresetXML::ReadXML(Parent);
 

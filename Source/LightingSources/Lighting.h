@@ -42,7 +42,7 @@ public:
 	QLight*				GetSelectedLight(void);
 	void				SelectPreviousLight(void);
 	void				SelectNextLight(void);
-	void				ReadXML(QDomElement& Parent);
+	void				ReadXML(const QDomElement& Parent);
 	QDomElement			WriteXML(QDomDocument& DOM, QDomElement& Parent);
 	static QLighting	Default(void);
 

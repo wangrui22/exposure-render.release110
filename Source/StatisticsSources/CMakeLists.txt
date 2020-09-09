@@ -5,13 +5,19 @@ SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
 include_directories(${PROJECT_SOURCE_DIR}/UtilSources)
 include_directories(/usr/local/cuda/include)
 
-find_package(Qt5 COMPONENTS Core Widgets Gui Xml REQUIRED)
+#find_package(Qt5 COMPONENTS Core Widgets Gui Xml REQUIRED)
+
+find_package(Qt4 REQUIRED)
+include(${QT_USE_FILE})
+set(CMAKE_AUTOMOC ON)
 
 aux_source_directory(./ StatisticSrc)
 
 add_library(StatisticLib ${StatisticSrc})
 
-target_link_libraries(StatisticLib UtilLib Qt5::Widgets Qt5::Core Qt5::Gui Qt5::Xml)
 
-set_target_properties(StatisticLib PROPERTIES AUTOMOC ON)
-set_target_properties(StatisticLib PROPERTIES AUTOUIC ON)
+target_link_libraries(StatisticLib UtilLib ${QT_LIBRARIES})
+
+#target_link_libraries(StatisticLib UtilLib Qt5::Widgets Qt5::Core Qt5::Gui Qt5::Xml)
+#set_target_properties(StatisticLib PROPERTIES AUTOMOC ON)
+#set_target_properties(StatisticLib PROPERTIES AUTOUIC ON)

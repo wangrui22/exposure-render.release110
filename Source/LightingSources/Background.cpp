@@ -135,7 +135,7 @@ void QBackground::SetFile(const QString& File)
 	emit Changed();
 }
 
-void QBackground::ReadXML(QDomElement& Parent)
+void QBackground::ReadXML(const QDomElement& Parent)
 {
 	QPresetXML::ReadXML(Parent);
 

@@ -236,8 +236,7 @@ public:
 			//m_Presets.back().ReadXML(Node.toElement());
 
 			//WR
-			auto ee = Node.toElement();
-			m_Presets.back().ReadXML(ee);
+			m_Presets.back().ReadXML(Node.toElement());
 		}
 
 		XmlFile.close();

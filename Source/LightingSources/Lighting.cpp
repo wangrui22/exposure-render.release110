@@ -224,7 +224,7 @@ void QLighting::RenameLight(const int& Index, const QString& Name)
 	emit Changed();
 }
 
-void QLighting::ReadXML(QDomElement& Parent)
+void QLighting::ReadXML(const QDomElement& Parent)
 {
 	SetSelectedLight((QLight*)NULL);
 

@@ -385,9 +385,7 @@ bool QRenderThread::Load(QString& FileName)
 	
 	Log("Casting volume data type to short", "grid");
 
-	//WR
-	ImageCast->SetOutput(MetaImageReader->GetOutput());
-	//ImageCast->SetInput(MetaImageReader->GetOutput());
+	ImageCast->SetInput(MetaImageReader->GetOutput());
 	ImageCast->SetOutputScalarTypeToShort();
 	ImageCast->Update();
 

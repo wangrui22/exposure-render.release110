@@ -10,7 +10,12 @@ include_directories(${PROJECT_SOURCE_DIR}/LightingSources)
 
 include_directories(/usr/local/cuda/include)
 
-find_package(Qt5 COMPONENTS Core Widgets Gui Xml REQUIRED)
+#find_package(Qt5 COMPONENTS Core Widgets Gui Xml REQUIRED)
+
+find_package(Qt4 REQUIRED)
+include(${QT_USE_FILE})
+set(CMAKE_AUTOMOC ON)
+
 find_package(VTK REQUIRED)
 
 include( ${VTK_USE_FILE} )
@@ -19,7 +24,8 @@ aux_source_directory(./ AppearanceSrc)
 
 add_library(AppearanceLib ${AppearanceSrc})
 
-target_link_libraries(AppearanceLib UtilLib PresetsLib LightingLib CudaLib CameraLib Qt5::Widgets Qt5::Core Qt5::Gui Qt5::Xml VTKRendering VTKGraphics VTKIO VTKCommon VTKViews)
+target_link_libraries(AppearanceLib UtilLib PresetsLib LightingLib CudaLib CameraLib ${QT_LIBRARIES} VTKRendering VTKGraphics VTKIO VTKCommon VTKViews)
 
-set_target_properties(AppearanceLib PROPERTIES AUTOMOC ON)
-set_target_properties(AppearanceLib PROPERTIES AUTOUIC ON)
+#target_link_libraries(AppearanceLib UtilLib PresetsLib LightingLib CudaLib CameraLib Qt5::Widgets Qt5::Core Qt5::Gui Qt5::Xml VTKRendering VTKGraphics VTKIO VTKCommon VTKViews)
+#set_target_properties(AppearanceLib PROPERTIES AUTOMOC ON)
+#set_target_properties(AppearanceLib PROPERTIES AUTOUIC ON)

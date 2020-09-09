@@ -14,7 +14,7 @@
 #pragma once
 
 #include "Geometry.h"
-#include "Variance.h"
+//#include "Variance.h"
 
 #define KRNL_TM_BLOCK_W		8
 #define KRNL_TM_BLOCK_H		8

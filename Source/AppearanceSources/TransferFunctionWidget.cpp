@@ -15,6 +15,7 @@
 
 #include "TransferFunctionWidget.h"
 #include "TransferFunction.h"
+#include "Status.h"
 
 QTransferFunctionWidget::QTransferFunctionWidget(QWidget* pParent) :
 	QGroupBox(pParent),
@@ -96,7 +97,8 @@ void QTransferFunctionWidget::OnRenderBegin(void)
 void QTransferFunctionWidget::OnRenderEnd(void)
 {
 	m_Canvas.setEnabled(false);
-	m_Canvas.SetHistogram(QHistogram());
+	QHistogram tmp;
+	m_Canvas.SetHistogram(tmp);
 }
 
 void QTransferFunctionWidget::OnUpdateGradients(void)
