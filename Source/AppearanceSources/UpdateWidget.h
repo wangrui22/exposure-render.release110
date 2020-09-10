@@ -13,6 +13,9 @@
 
 #pragma once
 
+#include <QGroupBox>
+#include <QGridLayout>
+
 class QUpdateWidget : public QGroupBox
 {
     Q_OBJECT

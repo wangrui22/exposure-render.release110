@@ -22,7 +22,7 @@
 #include "Status.h"
 
 // CUDA kernels
-#include "Core.cuh"
+//#include "Core.cuh"
 
 // VTK
 #include <vtkSmartPointer.h>
@@ -42,6 +42,7 @@
 #include "TransferFunction.h"
 #include "Camera.h"
 #include "Histogram.h"
+#include "CudaUtilities.h"
 
 
 // Render thread
@@ -186,12 +187,14 @@ void QRenderThread::run()
 	// Bind density buffer to texture
 	Log("Copying density volume to device", "grid");
 	gStatus.SetStatisticChanged("CUDA Memory", "Density Buffer", QString::number(gScene.m_Resolution.GetNoElements() * sizeof(short) / MB, 'f', 2), "MB");
-	BindDensityBuffer((short*)m_pDensityBuffer, Res);
+	//WR Extern link
+	//BindDensityBuffer((short*)m_pDensityBuffer, Res);
+	CudaUtil::BindDensityBufferExt((short*)m_pDensityBuffer, Res);
 
 	// Bind gradient magnitude buffer to texture
 	Log("Copying gradient magnitude to device", "grid");
 	gStatus.SetStatisticChanged("CUDA Memory", "Gradient Magnitude Buffer", QString::number(gScene.m_Resolution.GetNoElements() * sizeof(short) / MB, 'f', 2), "MB");
-	BindGradientMagnitudeBuffer((short*)m_pGradientMagnitudeBuffer, Res);
+	CudaUtil::BindGradientMagnitudeBufferExt((short*)m_pGradientMagnitudeBuffer, Res);
 
 	gStatus.SetStatisticChanged("Performance", "Timings", "");
 	gStatus.SetStatisticChanged("Camera", "", "");
@@ -216,7 +219,7 @@ void QRenderThread::run()
 	// Keep track of frames/second
 	CTiming FPS, RenderImage, BlurImage, PostProcessImage, DenoiseImage;
 
-	ResetRenderCanvasView();
+	CudaUtil::ResetRenderCanvasViewExt();
 
 	try
 	{
@@ -258,7 +261,7 @@ void QRenderThread::run()
 			// Restart the rendering when when the camera, lights and render params are dirty
 			if (SceneCopy.m_DirtyFlags.HasFlag(CameraDirty | LightsDirty | RenderParamsDirty | TransferFunctionDirty))
 			{
-				ResetRenderCanvasView();
+				CudaUtil::ResetRenderCanvasViewExt();
 
 				// Reset no. iterations
 				gScene.SetNoIterations(0);
@@ -273,17 +276,17 @@ void QRenderThread::run()
 
 			SceneCopy.m_Camera.Update();
 
-			BindConstants(&SceneCopy);
+			CudaUtil::BindConstantsExt(&SceneCopy);
 
-			BindTransferFunctionOpacity(SceneCopy.m_TransferFunctions.m_Opacity);
-			BindTransferFunctionDiffuse(SceneCopy.m_TransferFunctions.m_Diffuse);
-			BindTransferFunctionSpecular(SceneCopy.m_TransferFunctions.m_Specular);
-			BindTransferFunctionRoughness(SceneCopy.m_TransferFunctions.m_Roughness);
-			BindTransferFunctionEmission(SceneCopy.m_TransferFunctions.m_Emission);
+			CudaUtil::BindTransferFunctionOpacityExt(SceneCopy.m_TransferFunctions.m_Opacity);
+			CudaUtil::BindTransferFunctionDiffuseExt(SceneCopy.m_TransferFunctions.m_Diffuse);
+			CudaUtil::BindTransferFunctionSpecularExt(SceneCopy.m_TransferFunctions.m_Specular);
+			CudaUtil::BindTransferFunctionRoughnessExt(SceneCopy.m_TransferFunctions.m_Roughness);
+			CudaUtil::BindTransferFunctionEmissionExt(SceneCopy.m_TransferFunctions.m_Emission);
 
-			BindRenderCanvasView(SceneCopy.m_Camera.m_Film.m_Resolution);
+			CudaUtil::BindRenderCanvasViewExt(SceneCopy.m_Camera.m_Film.m_Resolution);
 
-  			Render(0, SceneCopy, RenderImage, BlurImage, PostProcessImage, DenoiseImage);
+  			CudaUtil::RenderExt(0, SceneCopy, RenderImage, BlurImage, PostProcessImage, DenoiseImage);
 		
 			gScene.SetNoIterations(gScene.GetNoIterations() + 1);
 
@@ -297,7 +300,7 @@ void QRenderThread::run()
  			gStatus.SetStatisticChanged("Performance", "FPS", QString::number(FPS.m_FilteredDuration, 'f', 2), "Frames/Sec.");
  			gStatus.SetStatisticChanged("Performance", "No. Iterations", QString::number(SceneCopy.GetNoIterations()), "Iterations");
 
-			HandleCudaError(cudaMemcpy(m_pRenderImage, GetDisplayEstimate(), SceneCopy.m_Camera.m_Film.m_Resolution.GetNoElements() * sizeof(CColorRgbLdr), cudaMemcpyDeviceToHost));
+			HandleCudaError(cudaMemcpy(m_pRenderImage, CudaUtil::GetDisplayEstimateExt(), SceneCopy.m_Camera.m_Film.m_Resolution.GetNoElements() * sizeof(CColorRgbLdr), cudaMemcpyDeviceToHost));
 
 			gFrameBuffer.Set((unsigned char*)m_pRenderImage, SceneCopy.m_Camera.m_Film.GetWidth(), SceneCopy.m_Camera.m_Film.GetHeight());
 
@@ -326,15 +329,15 @@ void QRenderThread::run()
 	free(m_pRenderImage);
 	m_pRenderImage = NULL;
 
-	UnbindDensityBuffer();
+	CudaUtil::UnbindDensityBufferExt();
 
-	UnbindTransferFunctionOpacity();
-	UnbindTransferFunctionDiffuse();
-	UnbindTransferFunctionSpecular();
-	UnbindTransferFunctionRoughness();
-	UnbindTransferFunctionEmission();
+	CudaUtil::UnbindTransferFunctionOpacityExt();
+	CudaUtil::UnbindTransferFunctionDiffuseExt();
+	CudaUtil::UnbindTransferFunctionSpecularExt();
+	CudaUtil::UnbindTransferFunctionRoughnessExt();
+	CudaUtil::UnbindTransferFunctionEmissionExt();
 	
-	FreeRenderCanvasView();
+	CudaUtil::FreeRenderCanvasViewExt();
 
 	// Let others know that we have stopped rendering
 	gStatus.SetRenderEnd();
@@ -385,7 +388,9 @@ bool QRenderThread::Load(QString& FileName)
 	
 	Log("Casting volume data type to short", "grid");
 
-	ImageCast->SetInput(MetaImageReader->GetOutput());
+	//WR vtk5->vtk7
+	ImageCast->SetInputConnection(MetaImageReader->GetOutputPort());
+	//ImageCast->SetInput(MetaImageReader->GetOutput());
 	ImageCast->SetOutputScalarTypeToShort();
 	ImageCast->Update();
 
@@ -439,7 +444,9 @@ bool QRenderThread::Load(QString& FileName)
 	Log("Creating gradient magnitude volume", "grid");
 		
 	GradientMagnitude->SetDimensionality(3);
-	GradientMagnitude->SetInput(ImageCast->GetOutput());
+	//WR vtk5->vtk7
+	//GradientMagnitude->SetInput(ImageCast->GetOutput());
+	GradientMagnitude->SetInputConnection(ImageCast->GetOutputPort());
 	GradientMagnitude->Update();
 
 	vtkImageData* GradientMagnitudeBuffer = GradientMagnitude->GetOutput();

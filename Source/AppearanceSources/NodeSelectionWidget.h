@@ -31,7 +31,7 @@ public:
 
 private slots:
 	void OnNodeSelectionChanged(QNode* pNode);
-	//void OnNodeSelectionChanged(const int& Index);
+	void OnNodeSelectionChanged(const int& Index);
 	void OnFirstNode(void);
 	void OnPreviousNode(void);
 	void OnNextNode(void);

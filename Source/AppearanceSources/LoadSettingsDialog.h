@@ -19,6 +19,7 @@
 #include <QGroupBox>
 #include <QLabel>
 #include <QCheckBox>
+#include <QDialogButtonBox>
 
 class QLoadSettingsDialog : public QDialog
 {

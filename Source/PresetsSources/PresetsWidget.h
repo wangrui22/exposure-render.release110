@@ -185,8 +185,8 @@ public:
 		QString FileName = QApplication::applicationDirPath() + "/Presets" + "/" + m_InternalName + "Presets.xml";
 
 		//WR Qt4->Qt5
-		Log(QString("Loading " + m_UserInterfaceName.toLower() + " presets from file: "+ QFileInfo(FileName).fileName()).toAscii());
-		//Log(QString("Loading " + m_UserInterfaceName.toLower() + " presets from file: "+ QFileInfo(FileName).fileName()).toLatin1());
+		//Log(QString("Loading " + m_UserInterfaceName.toLower() + " presets from file: "+ QFileInfo(FileName).fileName()).toAscii());
+		Log(QString("Loading " + m_UserInterfaceName.toLower() + " presets from file: "+ QFileInfo(FileName).fileName()).toLatin1());
 
 		// Set the file name
 		if (ChoosePath)
@@ -196,7 +196,7 @@ public:
 		}
 		else
 		{
-			FileName = "/home/SENSETIME/wangrui3/projects/cs/exposure-render.release110/Source/Presets/" + m_InternalName + "Presets.xml";
+			FileName = "/home/wangrui22/projects/cs/exposure-render.release110/Source/Presets/" + m_InternalName + "Presets.xml";
 			Log(FileName);
 			XmlFile.setFileName(FileName);
 		}
@@ -205,8 +205,8 @@ public:
 		if (!XmlFile.open(QIODevice::ReadOnly))
 		{
 			//WR Qt4->Qt5
-			Log(QString("Failed to open " + QFileInfo(FileName).fileName() + " for reading: " + XmlFile.errorString()).toAscii(), QLogger::Critical);
-			//Log(QString("Failed to open " + QFileInfo(FileName).fileName() + " for reading: " + XmlFile.errorString()).toLatin1(), QLogger::Critical);
+			//Log(QString("Failed to open " + QFileInfo(FileName).fileName() + " for reading: " + XmlFile.errorString()).toAscii(), QLogger::Critical);
+			Log(QString("Failed to open " + QFileInfo(FileName).fileName() + " for reading: " + XmlFile.errorString()).toLatin1(), QLogger::Critical);
 			return;
 		}
 
@@ -261,8 +261,8 @@ public:
 		QString FileName = QApplication::applicationDirPath() + "/Presets" + "/" + m_InternalName + "Presets.xml";
 
 		//WR Qt4->Qt5
-		Log(QString("Saving " + m_UserInterfaceName.toLower() + " presets to file: " + QFileInfo(FileName).fileName()).toAscii());
-		//Log(QString("Saving " + m_UserInterfaceName.toLower() + " presets to file: " + QFileInfo(FileName).fileName()).toLatin1());
+		//Log(QString("Saving " + m_UserInterfaceName.toLower() + " presets to file: " + QFileInfo(FileName).fileName()).toAscii());
+		Log(QString("Saving " + m_UserInterfaceName.toLower() + " presets to file: " + QFileInfo(FileName).fileName()).toLatin1());
 
 		// Set the file name
 		if (ChoosePath)
@@ -279,8 +279,8 @@ public:
 		if (!XmlFile.open(QIODevice::WriteOnly ))
 		{
 			//WR Qt4->Qt5
-			Log(QString("Failed to open " + QFileInfo(FileName).fileName() + ".xml for writing: " + XmlFile.errorString()).toAscii(), QLogger::Critical);
-			//Log(QString("Failed to open " + QFileInfo(FileName).fileName() + ".xml for writing: " + XmlFile.errorString()).toLatin1(), QLogger::Critical);
+			//Log(QString("Failed to open " + QFileInfo(FileName).fileName() + ".xml for writing: " + XmlFile.errorString()).toAscii(), QLogger::Critical);
+			Log(QString("Failed to open " + QFileInfo(FileName).fileName() + ".xml for writing: " + XmlFile.errorString()).toLatin1(), QLogger::Critical);
 			return;
 		}
 

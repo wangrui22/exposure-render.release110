@@ -102,7 +102,7 @@ void CVtkWidget::OnRenderBegin(void)
 	m_ImageImport->Update();
 
 	m_ImageActor->SetInterpolate(1);
-	m_ImageActor->SetInput(m_ImageImport->GetOutput());
+	m_ImageActor->SetInputData(m_ImageImport->GetOutput());
 	m_ImageActor->SetScale(1, -1, -1);
 	m_ImageActor->VisibilityOn();
 
@@ -180,7 +180,7 @@ void CVtkWidget::OnRenderLoopTimer(void)
 	m_ImageImport->SetDataExtentToWholeExtent();
 	m_ImageImport->Update();
 	
-	m_ImageActor->SetInput(m_ImageImport->GetOutput());
+	m_ImageActor->SetInputData(m_ImageImport->GetOutput());
 
 	m_RenderWindow->GetInteractor()->Render();
 }

@@ -13,6 +13,15 @@
 
 #pragma once
 
+#include <QGroupBox>
+#include <QGridLayout>
+#include <QSlider>
+#include <QSpinBox>
+#include <QCheckBox>
+#include <QComboBox>
+#include <QDockWidget>
+
+
 class CTracerSettingsWidget : public QGroupBox
 {
     Q_OBJECT

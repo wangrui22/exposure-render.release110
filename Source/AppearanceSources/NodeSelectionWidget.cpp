@@ -99,7 +99,7 @@ QNodeSelectionWidget::QNodeSelectionWidget(QWidget* pParent) :
 
 	SetupSelectionUI();
 
-	OnNodeSelectionChanged(NULL);
+	OnNodeSelectionChanged((QNode*)NULL);
 }
 
 void QNodeSelectionWidget::OnNodeSelectionChanged(QNode* pNode)
@@ -107,11 +107,11 @@ void QNodeSelectionWidget::OnNodeSelectionChanged(QNode* pNode)
 	SetupSelectionUI();
 }
 
-// void QNodeSelectionWidget::OnNodeSelectionChanged(const int& Index)
-// {
-// 	gTransferFunction.SetSelectedNode(Index);
-// 	SetupSelectionUI();
-// }
+void QNodeSelectionWidget::OnNodeSelectionChanged(const int& Index)
+{
+	gTransferFunction.SetSelectedNode(Index);
+	SetupSelectionUI();
+}
 
 void QNodeSelectionWidget::OnFirstNode(void)
 {

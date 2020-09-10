@@ -13,14 +13,13 @@ find_package(Qt5 COMPONENTS Core Widgets Gui Xml REQUIRED)
 
 aux_source_directory(./ UtilSrc)
 
-find_package(CUDA REQUIRED)
-
 include_directories(/usr/local/cuda/include)
 
 add_library(UtilLib ${UtilSrc})
 
 #QT5
 target_link_libraries(UtilLib Qt5::Widgets Qt5::Core Qt5::Gui Qt5::Xml)
+
 set_target_properties(UtilLib PROPERTIES AUTOMOC ON)
 set_target_properties(UtilLib PROPERTIES AUTOUIC ON)
 

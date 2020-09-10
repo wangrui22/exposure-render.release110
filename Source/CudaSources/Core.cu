@@ -12,6 +12,9 @@
 */
 
 #include "Core.cuh"
+#include "Geometry.h"
+#include "Timing.h"
+#include "Scene.h"
 #include "cutil_math.h"
 
 texture<short, cudaTextureType3D, cudaReadModeNormalizedFloat>		gTexDensity;

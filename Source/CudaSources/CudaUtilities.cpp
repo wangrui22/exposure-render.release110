@@ -15,6 +15,7 @@
 #include "Logger.h"
 #include "CudaUtilities.h"
 #include <QString>
+#include <cuda_runtime.h>
 
 CCudaTimer::CCudaTimer(void)
 {
@@ -91,13 +92,13 @@ void HandleCudaError(const cudaError_t CudaError, const char* pDescription /*= "
 		return;
 
 	//WR Qt4->Qt5
-	Log(QString("Encountered a critical CUDA error: " + QString::fromAscii(pDescription) + " " + QString(cudaGetErrorString(CudaError))));
+	// Log(QString("Encountered a critical CUDA error: " + QString::fromAscii(pDescription) + " " + QString(cudaGetErrorString(CudaError))));
 
-	throw new QString("Encountered a critical CUDA error: " + QString::fromAscii(pDescription) + " " + QString(cudaGetErrorString(CudaError)));
+	// throw new QString("Encountered a critical CUDA error: " + QString::fromAscii(pDescription) + " " + QString(cudaGetErrorString(CudaError)));
 
-	// Log(QString("Encountered a critical CUDA error: " + QString::fromLatin1(pDescription) + " " + QString(cudaGetErrorString(CudaError))));
+	Log(QString("Encountered a critical CUDA error: " + QString::fromLatin1(pDescription) + " " + QString(cudaGetErrorString(CudaError))));
 
-	// throw new QString("Encountered a critical CUDA error: " + QString::fromLatin1(pDescription) + " " + QString(cudaGetErrorString(CudaError)));
+	throw new QString("Encountered a critical CUDA error: " + QString::fromLatin1(pDescription) + " " + QString(cudaGetErrorString(CudaError)));
 }
 
 void HandleCudaKernelError(const cudaError_t CudaError, const char* pName /*= ""*/)
@@ -106,13 +107,13 @@ void HandleCudaKernelError(const cudaError_t CudaError, const char* pName /*= ""
 		return;
 
 	//WR Qt4->Qt5
-	Log(QString("The '" + QString::fromAscii(pName) + "' kernel caused the following CUDA runtime error: " + QString(cudaGetErrorString(CudaError))));
+	// Log(QString("The '" + QString::fromAscii(pName) + "' kernel caused the following CUDA runtime error: " + QString(cudaGetErrorString(CudaError))));
 
-	throw new QString("The '" + QString::fromAscii(pName) + "' kernel caused the following CUDA runtime error: " + QString(cudaGetErrorString(CudaError)));
+	// throw new QString("The '" + QString::fromAscii(pName) + "' kernel caused the following CUDA runtime error: " + QString(cudaGetErrorString(CudaError)));
 
-	// Log(QString("The '" + QString::fromLatin1(pName) + "' kernel caused the following CUDA runtime error: " + QString(cudaGetErrorString(CudaError))));
+	Log(QString("The '" + QString::fromLatin1(pName) + "' kernel caused the following CUDA runtime error: " + QString(cudaGetErrorString(CudaError))));
 
-	// throw new QString("The '" + QString::fromLatin1(pName) + "' kernel caused the following CUDA runtime error: " + QString(cudaGetErrorString(CudaError)));
+	throw new QString("The '" + QString::fromLatin1(pName) + "' kernel caused the following CUDA runtime error: " + QString(cudaGetErrorString(CudaError)));
 }
 
 int GetTotalCudaMemory(void)
@@ -223,4 +224,107 @@ bool SetCudaDevice(const int& CudaDeviceID)
 void ResetDevice(void)
 {
 	HandleCudaError(cudaDeviceReset(), "reset device");
+}
+
+extern "C" void BindDensityBuffer(short* pBuffer, cudaExtent Extent);
+extern "C" void BindGradientMagnitudeBuffer(short* pBuffer, cudaExtent Extent);
+extern "C" void UnbindDensityBuffer(void);
+extern "C" void UnbindGradientMagnitudeBuffer(void);
+extern "C" void BindRenderCanvasView(const CResolution2D& Resolution);
+extern "C" void ResetRenderCanvasView(void);
+extern "C" void FreeRenderCanvasView(void);
+extern "C" unsigned char* GetDisplayEstimate(void);
+extern "C" void BindTransferFunctionOpacity(CTransferFunction& TransferFunctionOpacity);
+extern "C" void BindTransferFunctionDiffuse(CTransferFunction& TransferFunctionDiffuse);
+extern "C" void BindTransferFunctionSpecular(CTransferFunction& TransferFunctionSpecular);
+extern "C" void BindTransferFunctionRoughness(CTransferFunction& TransferFunctionRoughness);
+extern "C" void BindTransferFunctionEmission(CTransferFunction& TransferFunctionEmission);
+extern "C" void UnbindTransferFunctionOpacity(void);
+extern "C" void UnbindTransferFunctionDiffuse(void);
+extern "C" void UnbindTransferFunctionSpecular(void);
+extern "C" void UnbindTransferFunctionRoughness(void);
+extern "C" void UnbindTransferFunctionEmission(void);
+extern "C" void BindConstants(CScene* pScene);
+extern "C" void Render(const int& Type, CScene& Scene, CTiming& RenderImage, CTiming& BlurImage, CTiming& PostProcessImage, CTiming& DenoiseImage);
+
+
+void CudaUtil::BindDensityBufferExt(short* pBuffer, cudaExtent Extent) {
+	BindDensityBuffer(pBuffer,Extent);
+}
+
+
+void CudaUtil::BindGradientMagnitudeBufferExt(short* pBuffer, cudaExtent Extent) {
+	BindGradientMagnitudeBuffer(pBuffer, Extent);
+}
+
+void CudaUtil::UnbindDensityBufferExt(void) {
+	UnbindDensityBuffer();
+}
+
+void CudaUtil::UnbindGradientMagnitudeBufferExt(void) {
+	UnbindGradientMagnitudeBuffer();
+}
+
+void CudaUtil::BindRenderCanvasViewExt(const CResolution2D& Resolution) {
+	BindRenderCanvasView(Resolution);
+}
+
+void CudaUtil::ResetRenderCanvasViewExt(void) {
+	ResetRenderCanvasView();
+}
+
+void CudaUtil::FreeRenderCanvasViewExt(void) {
+	FreeRenderCanvasView();
+}
+
+unsigned char* CudaUtil::GetDisplayEstimateExt(void) {
+	return GetDisplayEstimate();
+}
+
+void CudaUtil::BindTransferFunctionOpacityExt(CTransferFunction& TransferFunctionOpacity) {
+	BindTransferFunctionOpacity(TransferFunctionOpacity);
+}
+
+void CudaUtil::BindTransferFunctionDiffuseExt(CTransferFunction& TransferFunctionDiffuse) {
+	BindTransferFunctionDiffuse(TransferFunctionDiffuse);
+}
+
+void CudaUtil::BindTransferFunctionSpecularExt(CTransferFunction& TransferFunctionSpecular) {
+	BindTransferFunctionSpecular(TransferFunctionSpecular);
+}
+
+void CudaUtil::BindTransferFunctionRoughnessExt(CTransferFunction& TransferFunctionRoughness) {
+	BindTransferFunctionRoughness(TransferFunctionRoughness);
+}
+
+void CudaUtil::BindTransferFunctionEmissionExt(CTransferFunction& TransferFunctionEmission) {
+	BindTransferFunctionEmission(TransferFunctionEmission);
+}
+
+void CudaUtil::UnbindTransferFunctionOpacityExt(void) {
+	UnbindTransferFunctionOpacity();
+}
+
+void CudaUtil::UnbindTransferFunctionDiffuseExt(void) {
+	UnbindTransferFunctionDiffuse();
+}
+
+void CudaUtil::UnbindTransferFunctionSpecularExt(void) {
+	UnbindTransferFunctionSpecular();
+}
+
+void CudaUtil::UnbindTransferFunctionRoughnessExt(void) {
+	UnbindTransferFunctionRoughness();
+}
+
+void CudaUtil::UnbindTransferFunctionEmissionExt(void) {
+	UnbindTransferFunctionEmission();
+}
+
+void CudaUtil::BindConstantsExt(CScene* pScene) {
+	BindConstants(pScene);
+}
+
+void CudaUtil::RenderExt(const int& Type, CScene& Scene, CTiming& RenderImage, CTiming& BlurImage, CTiming& PostProcessImage, CTiming& DenoiseImage) {
+	Render(Type, Scene, RenderImage, BlurImage, PostProcessImage, DenoiseImage);
 }

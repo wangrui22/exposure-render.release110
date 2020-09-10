@@ -15,6 +15,11 @@
 
 #include <cuda.h>
 #include <cuda_runtime_api.h>
+//#include "Core.cuh"
+
+#include "Geometry.h"
+#include "Timing.h"
+#include "Scene.h"
 
 class CCudaTimer
 {
@@ -120,3 +125,27 @@ bool InitializeCuda(void)
 	return true;
 }
 */
+
+class CudaUtil {
+public:
+	static void BindDensityBufferExt(short* pBuffer, cudaExtent Extent);
+	static void BindGradientMagnitudeBufferExt(short* pBuffer, cudaExtent Extent);
+	static void UnbindDensityBufferExt(void);
+	static void UnbindGradientMagnitudeBufferExt(void);
+	static void BindRenderCanvasViewExt(const CResolution2D& Resolution);
+	static void ResetRenderCanvasViewExt(void);
+	static void FreeRenderCanvasViewExt(void);
+	static unsigned char* GetDisplayEstimateExt(void);
+	static void BindTransferFunctionOpacityExt(CTransferFunction& TransferFunctionOpacity);
+	static void BindTransferFunctionDiffuseExt(CTransferFunction& TransferFunctionDiffuse);
+	static void BindTransferFunctionSpecularExt(CTransferFunction& TransferFunctionSpecular);
+	static void BindTransferFunctionRoughnessExt(CTransferFunction& TransferFunctionRoughness);
+	static void BindTransferFunctionEmissionExt(CTransferFunction& TransferFunctionEmission);
+	static void UnbindTransferFunctionOpacityExt(void);
+	static void UnbindTransferFunctionDiffuseExt(void);
+	static void UnbindTransferFunctionSpecularExt(void);
+	static void UnbindTransferFunctionRoughnessExt(void);
+	static void UnbindTransferFunctionEmissionExt(void);
+	static void BindConstantsExt(CScene* pScene);
+	static void RenderExt(const int& Type, CScene& Scene, CTiming& RenderImage, CTiming& BlurImage, CTiming& PostProcessImage, CTiming& DenoiseImage);
+};

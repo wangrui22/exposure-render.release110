@@ -9,15 +9,15 @@
 <Width Value="0.01"/>
 <Height Value="0.01"/>
 <LockSize Value="1"/>
-<Color G="170" R="255" B="127"/>
+<Color G="170" B="127" R="255"/>
 <Intensity Value="100"/>
 </Light>
 </Lights>
 <Background>
 <Enable Value="1"/>
-<TopColor G="170" R="85" B="255"/>
-<MiddleColor G="170" R="255" B="127"/>
-<BottomColor G="170" R="255" B="127"/>
+<TopColor G="170" B="255" R="85"/>
+<MiddleColor G="170" B="127" R="255"/>
+<BottomColor G="170" B="127" R="255"/>
 <Intensity Value="3.3607"/>
 <UseTexture Value="0"/>
 <File Value=""/>
@@ -32,15 +32,15 @@
 <Width Value="0.01"/>
 <Height Value="0.01"/>
 <LockSize Value="1"/>
-<Color G="170" R="255" B="127"/>
+<Color G="170" B="127" R="255"/>
 <Intensity Value="100"/>
 </Light>
 </Lights>
 <Background>
 <Enable Value="1"/>
-<TopColor G="170" R="85" B="255"/>
-<MiddleColor G="55" R="84" B="40"/>
-<BottomColor G="85" R="170" B="0"/>
+<TopColor G="170" B="255" R="85"/>
+<MiddleColor G="55" B="40" R="84"/>
+<BottomColor G="85" B="0" R="170"/>
 <Intensity Value="5.9836"/>
 <UseTexture Value="0"/>
 <File Value=""/>
@@ -55,15 +55,15 @@
 <Width Value="2.8277"/>
 <Height Value="2.8277"/>
 <LockSize Value="1"/>
-<Color G="170" R="255" B="127"/>
+<Color G="170" B="127" R="255"/>
 <Intensity Value="100"/>
 </Light>
 </Lights>
 <Background>
 <Enable Value="1"/>
-<TopColor G="108" R="35" B="255"/>
-<MiddleColor G="35" R="53" B="26"/>
-<BottomColor G="0" R="0" B="0"/>
+<TopColor G="108" B="255" R="35"/>
+<MiddleColor G="35" B="26" R="53"/>
+<BottomColor G="0" B="0" R="0"/>
 <Intensity Value="2.9508"/>
 <UseTexture Value="0"/>
 <File Value=""/>
@@ -78,15 +78,15 @@
 <Width Value="0.9492"/>
 <Height Value="0.9492"/>
 <LockSize Value="1"/>
-<Color G="228" R="255" B="165"/>
+<Color G="228" B="165" R="255"/>
 <Intensity Value="100"/>
 </Light>
 </Lights>
 <Background>
 <Enable Value="1"/>
-<TopColor G="170" R="85" B="255"/>
-<MiddleColor G="170" R="255" B="127"/>
-<BottomColor G="85" R="170" B="0"/>
+<TopColor G="170" B="255" R="85"/>
+<MiddleColor G="170" B="127" R="255"/>
+<BottomColor G="85" B="0" R="170"/>
 <Intensity Value="2.459"/>
 <UseTexture Value="0"/>
 <File Value=""/>
@@ -101,15 +101,15 @@
 <Width Value="0.6077"/>
 <Height Value="0.6076"/>
 <LockSize Value="1"/>
-<Color G="255" R="255" B="242"/>
+<Color G="255" B="242" R="255"/>
 <Intensity Value="100"/>
 </Light>
 </Lights>
 <Background>
 <Enable Value="1"/>
-<TopColor G="100" R="29" B="255"/>
-<MiddleColor G="53" R="80" B="40"/>
-<BottomColor G="85" R="170" B="0"/>
+<TopColor G="100" B="255" R="29"/>
+<MiddleColor G="53" B="40" R="80"/>
+<BottomColor G="85" B="0" R="170"/>
 <Intensity Value="2.9508"/>
 <UseTexture Value="0"/>
 <File Value=""/>
@@ -124,15 +124,15 @@
 <Width Value="0.01"/>
 <Height Value="0.01"/>
 <LockSize Value="1"/>
-<Color G="170" R="255" B="127"/>
+<Color G="170" B="127" R="255"/>
 <Intensity Value="100"/>
 </Light>
 </Lights>
 <Background>
 <Enable Value="1"/>
-<TopColor G="170" R="85" B="255"/>
-<MiddleColor G="82" R="123" B="61"/>
-<BottomColor G="85" R="170" B="0"/>
+<TopColor G="170" B="255" R="85"/>
+<MiddleColor G="82" B="61" R="123"/>
+<BottomColor G="85" B="0" R="170"/>
 <Intensity Value="7.7869"/>
 <UseTexture Value="0"/>
 <File Value=""/>

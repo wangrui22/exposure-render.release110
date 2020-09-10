@@ -17,6 +17,8 @@
 #include "NodeItem.h"
 #include "EdgeItem.h"
 
+#include <QGraphicsScene>
+
 QTransferFunctionItem::QTransferFunctionItem(QGraphicsItem* pParent) :
 	QGraphicsRectItem(pParent),
 	m_pTransferFunction(NULL),

@@ -97,10 +97,10 @@ QLogWidget::QLogWidget(QWidget* pParent /*= NULL*/) :
 	// horizontalHeader()->setResizeMode(1, QHeaderView::Fixed);
 	// horizontalHeader()->setResizeMode(2, QHeaderView::Stretch);
 
-	//WR Qt5->Qt4
-	horizontalHeader()->setResizeMode(0, QHeaderView::ResizeToContents);
-	horizontalHeader()->setResizeMode(1, QHeaderView::Fixed);
-	horizontalHeader()->setResizeMode(2, QHeaderView::Stretch);
+	//WR Qt5->Qt4q
+	horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+	horizontalHeader()->setSectionResizeMode(1, QHeaderView::Fixed);
+	horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
 
 
 	horizontalHeader()->resizeSection(1, 25);

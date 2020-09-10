@@ -15,6 +15,8 @@
 
 #include "TransferFunctionView.h"
 #include "GradientRamp.h"
+#include <QGroupBox>
+#include <QGridLayout>
 
 class QTransferFunctionWidget : public QGroupBox
 {

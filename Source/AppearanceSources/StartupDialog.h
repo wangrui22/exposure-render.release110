@@ -15,6 +15,10 @@
 
 #include "UpdateWidget.h"
 #include "HardwareWidget.h"
+#include <QTextEdit>
+#include <QDialog>
+#include <QDialogButtonBox>
+#include <QCheckBox>
 
 class QStartupDialog : public QDialog
 {

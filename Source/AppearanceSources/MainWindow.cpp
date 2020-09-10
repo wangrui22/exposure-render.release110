@@ -22,6 +22,9 @@
 #include "Status.h"
 #include "CudaUtilities.h"
 
+#include <QMenuBar>
+#include <QStatusBar>
+
 QUrl	gVersionInfoUrl("http://exposure-render.googlecode.com/hg/VersionInfo.xml");
 int		gVersionID = 303;
 
@@ -361,7 +364,8 @@ void CMainWindow::VersionInfoDownloaded(void)
 
 	if (!XmlFile.open(QIODevice::ReadOnly))
 	{
-		Log(QString("Failed to open " + QFileInfo(FilePath).fileName() + " for reading: " + XmlFile.errorString()).toAscii(), QLogger::Critical);
+		//Log(QString("Failed to open " + QFileInfo(FilePath).fileName() + " for reading: " + XmlFile.errorString()).toAscii(), QLogger::Critical);
+		Log(QString("Failed to open " + QFileInfo(FilePath).fileName() + " for reading: " + XmlFile.errorString()).toLatin1(), QLogger::Critical);
 		return;
 	}
 
