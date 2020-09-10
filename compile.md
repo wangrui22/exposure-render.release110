@@ -1,6 +1,7 @@
 ## Compile env
-+ ubuntu 16.04
-+ gcc 5.4.0
++ ubuntu 18.04
++ gcc 7.5.0
 + cuda 10.2
-+ qt 4.8.7
-+ vtk-v5.6.1
++ qt 5.12.0
++ vtk-7.1
++ cmake 3.13.0-rc3
